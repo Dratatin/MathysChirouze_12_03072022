@@ -13,6 +13,8 @@ root.render(
     <BrowserRouter>
       <Header />
       <Sidebar />
+      {/* <div className="main">
+      </div> */}
       <main>
         <Routes>
           <Route path="/" element={<Profil/>}/>
