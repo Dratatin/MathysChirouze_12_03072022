@@ -1,10 +1,11 @@
 .sidebar {
     align-items: center;
-    background-color: black;
+    background-color: $blackbackground;
     display: flex;
     flex-direction: column;
     height: 100vh;
     justify-content: center;
+    left: 0;
     position: absolute;
     top: 0;
     width: 120px;
@@ -14,8 +15,10 @@
             background: white;
             border-radius: 0.5em;
             display: flex;
+            height: 64px;
             margin: 2em 0;
             padding: 1em;
+            width: 64px;
             img {
                 width: 100%;
             }
