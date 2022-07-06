@@ -1,0 +1,27 @@
+.profil {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2em;
+    height: 100%;
+    &__heading {
+        &__salutation {
+            margin-bottom: 0.5em;
+            span {
+                color: $primary;
+            }
+        }
+    }
+    &__content {
+        display: flex;
+        gap: 2em;
+        &__details {
+            flex: 1;
+        }
+        &__summary {
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+        }
+    }
+}

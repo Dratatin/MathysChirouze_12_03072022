@@ -5,6 +5,8 @@
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     height: 90px;
+    position: fixed;
+    width: 100%;
     &__logoctn {
         display: flex;
         grid-row: 1;
