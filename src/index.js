@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Navigate, Route, Routes, BrowserRouter } from 'react-router-dom';
 import './style/main.css';
 import Profil from './components/profil';
 import Header from './components/header';
@@ -15,7 +15,8 @@ root.render(
       <Sidebar />
       <main>
         <Routes>
-          <Route path="/" element={<Profil/>}/>
+          <Route path="/" element={<Navigate to="/profil/12" />}/>
+          <Route path="/profil/:userId" element={<Profil />}/>
         </Routes>
       </main>
     </BrowserRouter>
