@@ -25,6 +25,11 @@ h2 {
   font-size: 48px;
 }
 
+h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -128,10 +133,46 @@ main {
   padding: 9em 7em 5em 7em;
 }
 
-.daily {
-  background-color: #FBFBFB;
-  border-radius: 0.3em;
-  padding: 2em;
+.daily-activity__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 3em;
+}
+.daily-activity__heading__listctn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3em;
+}
+.daily-activity__heading__listctn li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.daily-activity__heading__listctn li::before {
+  content: "";
+  background-color: #020203;
+  border-radius: 2em;
+  height: 10px;
+  margin-right: 1em;
+  width: 10px;
+}
+.daily-activity__heading__listctn .calories::before {
+  background-color: #E60000;
+}
+.daily-activity .recharts-wrapper .recharts-cartesian-grid-horizontal line:first-child {
+  stroke-opacity: 0;
 }
 
 .recapbox {
@@ -219,6 +260,31 @@ main {
             transform: rotate(360deg);
   }
 }
+.tooltip {
+  background-color: #E60000;
+  color: white;
+  font-size: 10px;
+  padding: 0.5em 0;
+}
+.tooltip__listctn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.tooltip__listctn li {
+  padding: 1.5em 1em;
+}
+
 .profil {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,9 +312,12 @@ main {
   gap: 2em;
 }
 .profil__content__details {
+  background: #FBFBFB;
+  border-radius: 0.3em;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  padding: 2em;
 }
 .profil__content__summary {
   display: -webkit-box;

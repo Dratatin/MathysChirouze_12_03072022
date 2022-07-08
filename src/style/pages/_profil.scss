@@ -16,7 +16,10 @@
         display: flex;
         gap: 2em;
         &__details {
+            background: $greybackground;
+            border-radius: $radius;
             flex: 1;
+            padding: 2em;
         }
         &__summary {
             display: flex;

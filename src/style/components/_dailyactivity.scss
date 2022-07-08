@@ -1,5 +1,31 @@
-.daily {
-    background-color: $greybackground;
-    border-radius: $radius;
-    padding: 2em;
+.daily-activity {
+    &__heading {
+        display: flex;
+        font-size: 14px;
+        justify-content: space-between;
+        margin-bottom: 3em;
+        &__listctn {
+            align-items: center;
+            display: flex;
+            gap: 3em;
+            li {
+                align-items: center;
+                display: flex;
+                &::before {
+                    content: "";
+                    background-color: $secondary;
+                    border-radius: 2em;
+                    height: 10px;
+                    margin-right: 1em;
+                    width: 10px;
+                }
+            }
+            .calories::before {
+                background-color: #E60000;
+            }
+        }
+    }
+    .recharts-wrapper .recharts-cartesian-grid-horizontal line:first-child {
+        stroke-opacity: 0;
+    }
 }
