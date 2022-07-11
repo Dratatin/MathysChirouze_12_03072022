@@ -1,4 +1,7 @@
-import Dailyactivity from "./dailyactivity"
+import Dailyactivity from "./Dailyactivity"
+import AverageSession from "./AverageSession"
+import RadarPerformance from "./Radar"
+import Score from "./Score"
 import Recapbox from "./recapbox"
 import Loader from "./loader"
 import fire from "../assets/fire.svg"
@@ -26,8 +29,8 @@ const Profil = () => {
     } else {
         const userData = USER_MAIN_DATA.find(elem => elem.id === userId);
         const userActivity = USER_ACTIVITY.find(elem => elem.userId === userId);
-        const userAverageSession = USER_AVERAGE_SESSIONS.find(elem => elem.id === userId);
-        const userPerformance = USER_PERFORMANCE.find(elem => elem.id === userId);
+        const userAverageSession = USER_AVERAGE_SESSIONS.find(elem => elem.userId === userId);
+        const userPerformance = USER_PERFORMANCE.find(elem => elem.userId === userId);
 
         return (
             <section className="profil">
@@ -36,8 +39,13 @@ const Profil = () => {
                     <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
                 </div>
                 <div className="profil__content">
-                    <div className="profil__content__details">
-                        <Dailyactivity activity={userActivity}/>
+                    <div className="profil__content__activity">
+                        <Dailyactivity activity={userActivity.sessions}/>
+                        <div className="profil__content__activity__details">
+                            <AverageSession averageSession={userAverageSession.sessions}/>
+                            <RadarPerformance />
+                            <Score />
+                        </div>
                     </div>
                     <ul className="profil__content__summary">
                         <li><Recapbox icon={fire} type="fire" label="calories" data={userData.keyData.calorieCount}/></li>

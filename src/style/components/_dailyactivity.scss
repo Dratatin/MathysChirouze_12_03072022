@@ -1,4 +1,8 @@
 .daily-activity {
+    background: $greybackground;
+    border-radius: $radius;
+    flex: 1;
+    padding: 2em;
     &__heading {
         display: flex;
         font-size: 14px;

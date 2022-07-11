@@ -15,11 +15,22 @@
     &__content {
         display: flex;
         gap: 2em;
-        &__details {
-            background: $greybackground;
-            border-radius: $radius;
+        &__activity {
+            display: flex;
             flex: 1;
-            padding: 2em;
+            flex-direction: column;
+            gap: 2em;
+            &__details {
+                display: flex;
+                flex: 1;
+                gap: 2em;
+                & > * {
+                    background-color: $greybackground;
+                    border-radius: $radius;
+                    flex: 1;
+                    padding: 1em;
+                }
+            }
         }
         &__summary {
             display: flex;

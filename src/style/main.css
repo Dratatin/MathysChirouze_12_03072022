@@ -129,10 +129,17 @@ code {
 
 main {
   margin-left: 120px;
-  height: 100vh;
   padding: 9em 7em 5em 7em;
 }
 
+.daily-activity {
+  background: #FBFBFB;
+  border-radius: 0.3em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 2em;
+}
 .daily-activity__heading {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -311,13 +318,35 @@ main {
   display: flex;
   gap: 2em;
 }
-.profil__content__details {
-  background: #FBFBFB;
+.profil__content__activity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2em;
+}
+.profil__content__activity__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  gap: 2em;
+}
+.profil__content__activity__details > * {
+  background-color: #FBFBFB;
   border-radius: 0.3em;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 2em;
+  padding: 1em;
 }
 .profil__content__summary {
   display: -webkit-box;

@@ -11,13 +11,13 @@ const Dailyactivity = ({activity}) => {
                     <li className="calories">Calories (kCal)</li>
                 </ul>
             </div>
-            <ResponsiveContainer width="100%" height={230}>
+            <ResponsiveContainer width="100%" height={200}>
                 <BarChart
                 barGap={12}
                 barSize={8}
                 width={500}
                 height={300}
-                data={activity.sessions}
+                data={activity}
                 margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                 >
                     <CartesianGrid 
