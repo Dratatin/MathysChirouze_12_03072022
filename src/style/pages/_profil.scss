@@ -25,10 +25,8 @@
                 flex: 1;
                 gap: 2em;
                 & > * {
-                    background-color: $greybackground;
                     border-radius: $radius;
                     flex: 1;
-                    padding: 1em;
                 }
             }
         }

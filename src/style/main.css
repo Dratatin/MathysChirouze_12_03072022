@@ -268,10 +268,15 @@ main {
   }
 }
 .tooltip {
-  background-color: #E60000;
   color: white;
   font-size: 10px;
-  padding: 0.5em 0;
+}
+.tooltip--primary {
+  background-color: #E60000;
+}
+.tooltip--light {
+  background-color: #fff;
+  color: #000;
 }
 .tooltip__listctn {
   -webkit-box-align: center;
@@ -290,6 +295,14 @@ main {
 }
 .tooltip__listctn li {
   padding: 1.5em 1em;
+}
+
+.average-session {
+  background-color: #FF0101;
+}
+.average-session__label {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 1em;
 }
 
 .profil {
@@ -341,12 +354,10 @@ main {
   gap: 2em;
 }
 .profil__content__activity__details > * {
-  background-color: #FBFBFB;
   border-radius: 0.3em;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 1em;
 }
 .profil__content__summary {
   display: -webkit-box;
