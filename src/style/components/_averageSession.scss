@@ -1,7 +1,20 @@
 .average-session {
     background-color: $primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     &__label {
         color: rgba(255, 255, 255, 0.5);
-        padding: 1em;
+        padding: 2em 2em 0 2em;
+    }
+    &__personnalizedAxis {
+        display: flex;
+        flex: 1;
+        font-size: 12px;
+        justify-content: space-between;
+        padding: 1em 1em 1.5em 1em;
+        li {
+            color: rgba(255, 255, 255, 0.5);
+        }
     }
 }

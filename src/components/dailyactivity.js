@@ -2,6 +2,24 @@ import CustomTooltip from './customTooltip';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const Dailyactivity = ({activity}) => {
+    const getYaxisData = () => {
+        const getkKilogramValue = () => {
+            let value = []
+            activity.forEach(element => {
+                value.push(element.kilogram)
+            })
+            return value
+        }
+        const kilogramValues = getkKilogramValue()
+        const min = Math.min(...kilogramValues) - 1
+        const max = Math.max(...kilogramValues) + 1
+    
+        const somme = min + max
+        const medium = somme/2
+        const yAxisData = [min, medium, max]
+        return yAxisData
+    }
+    
     return (
         <div className="daily-activity">
             <div className="daily-activity__heading">
@@ -11,7 +29,7 @@ const Dailyactivity = ({activity}) => {
                     <li className="calories">Calories (kCal)</li>
                 </ul>
             </div>
-            <ResponsiveContainer width="100%" height={200}>
+            <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                 barGap={12}
                 barSize={8}
@@ -29,16 +47,17 @@ const Dailyactivity = ({activity}) => {
                         tickLine={false} 
                         stroke="#DEDEDE" 
                         tick={{ fill: "#9B9EAC", fontFamily: "Roboto", fontWeight: 500, fontSize: 14 }} 
-                        height={50}
+                        height={40}
                         tickSize={25}
                     />
                     <YAxis 
                         yAxisId="kilogram" 
-                        domain={['dataMin - 1', 'dataMax + 1']} 
+                        domain={['dataMin', 'dataMax']} 
                         dataKey="kilogram" 
                         orientation="right" 
                         tickLine={false} 
                         axisLine={false} 
+                        ticks={getYaxisData()}
                         tick={{ fill: "#9B9EAC", fontFamily: "Roboto", fontWeight: 500, fontSize: 14 }} 
                         width={70}
                         tickSize={50}
@@ -46,7 +65,7 @@ const Dailyactivity = ({activity}) => {
                     <YAxis 
                         hide 
                         yAxisId="calories" 
-                        domain={['dataMin - 20', 'dataMax + 20']} 
+                        domain={['dataMin - 100', 'dataMax + 100']} 
                         dataKey="calories" 
                         orientation="right" 
                     />

@@ -5,8 +5,10 @@
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     height: 90px;
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100%;
+    z-index: 1;
     &__logoctn {
         display: flex;
         grid-row: 1;

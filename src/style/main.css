@@ -43,8 +43,10 @@ code {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
   height: 90px;
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
+  z-index: 1;
 }
 .header__logoctn {
   display: -webkit-box;
@@ -129,15 +131,23 @@ code {
 
 main {
   margin-left: 120px;
-  padding: 9em 7em 5em 7em;
+  padding: 3em 7em 5em 7em;
 }
 
 .daily-activity {
   background: #FBFBFB;
   border-radius: 0.3em;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 320px;
   padding: 2em;
 }
 .daily-activity__heading {
@@ -191,8 +201,10 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 1.8em;
-  width: 260px;
+  padding: 2em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .recapbox__iconctn {
   -webkit-box-align: center;
@@ -299,10 +311,54 @@ main {
 
 .average-session {
   background-color: #FF0101;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .average-session__label {
   color: rgba(255, 255, 255, 0.5);
-  padding: 1em;
+  padding: 2em 2em 0 2em;
+}
+.average-session__personnalizedAxis {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 12px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em 1em 1.5em 1em;
+}
+.average-session__personnalizedAxis li {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.radar {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #282D30;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-transform: capitalize;
 }
 
 .profil {
@@ -316,8 +372,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  gap: 2em;
-  height: 100%;
+  gap: 4em;
 }
 .profil__heading__salutation {
   margin-bottom: 0.5em;
@@ -329,6 +384,8 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 2em;
 }
 .profil__content__activity {
@@ -338,34 +395,47 @@ main {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -ms-flex-preferred-size: 76%;
+      flex-basis: 76%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 2em;
+  overflow: hidden;
 }
 .profil__content__activity__details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2em;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  gap: 2em;
 }
 .profil__content__activity__details > * {
   border-radius: 0.3em;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  height: 260px;
+  min-width: 260px;
 }
 .profil__content__summary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 2em;
+}
+.profil__content__summary li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }/*# sourceMappingURL=main.css.map */

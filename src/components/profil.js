@@ -1,6 +1,6 @@
 import Dailyactivity from "./Dailyactivity"
 import AverageSession from "./AverageSession"
-import RadarPerformance from "./Radar"
+import RadarPerformance from "./RadarPerformance"
 import Score from "./Score"
 import Recapbox from "./recapbox"
 import Loader from "./loader"
@@ -17,7 +17,7 @@ const Profil = () => {
     const isLoading = null
     //
 
-    let { userId } = parseInt(useParams());
+    let { userId } = useParams();
     if (userId === undefined) {
       userId = 12
     }
@@ -27,10 +27,10 @@ const Profil = () => {
     } else if (isLoading) {
       return <Loader />
     } else {
-        const userData = USER_MAIN_DATA.find(elem => elem.id === userId);
-        const userActivity = USER_ACTIVITY.find(elem => elem.userId === userId);
-        const userAverageSession = USER_AVERAGE_SESSIONS.find(elem => elem.userId === userId);
-        const userPerformance = USER_PERFORMANCE.find(elem => elem.userId === userId);
+        const userData = USER_MAIN_DATA.find(elem => elem.id === parseInt(userId));
+        const userActivity = USER_ACTIVITY.find(elem => elem.userId === parseInt(userId));
+        const userAverageSession = USER_AVERAGE_SESSIONS.find(elem => elem.userId === parseInt(userId));
+        const userPerformance = USER_PERFORMANCE.find(elem => elem.userId === parseInt(userId));
 
         return (
             <section className="profil">
@@ -42,8 +42,8 @@ const Profil = () => {
                     <div className="profil__content__activity">
                         <Dailyactivity activity={userActivity.sessions}/>
                         <div className="profil__content__activity__details">
-                            <AverageSession averageSession={userAverageSession.sessions}/>
-                            <RadarPerformance />
+                            <AverageSession session={userAverageSession.sessions}/>
+                            <RadarPerformance performance={userPerformance}/>
                             <Score />
                         </div>
                     </div>

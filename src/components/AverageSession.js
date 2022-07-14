@@ -1,8 +1,8 @@
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import CustomTooltip from './customTooltip';
 
-const AverageSession = ({ averageSession }) => {
-    averageSession = averageSession.map(element => ({
+const AverageSession = ({ session }) => {
+    const data = session.map(element => ({
         ...element,
         day : ["L","M","M","J","V","S","D"][element.day - 1]
     }))
@@ -10,12 +10,12 @@ const AverageSession = ({ averageSession }) => {
     return(
         <div className="average-session">
             <h3 className="average-session__label">Durée moyenne de <br/> sessions</h3>
-            <ResponsiveContainer width="100%" height={180}>
+            <ResponsiveContainer width="100%">
                 <LineChart
-                width={500}
-                height={300}
-                data={averageSession}
-                margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+                    width={500}
+                    height={300}
+                    data={data}
+                    margin={{ right: -2, left: -2 }}
                 >
                     <defs>
                         <linearGradient id="linear">
@@ -23,13 +23,10 @@ const AverageSession = ({ averageSession }) => {
                             <stop offset="100%" stopColor="white" stopOpacity={1} />
                         </linearGradient>
                     </defs>
+                    <YAxis hide={true} domain={['dataMin - 10', 'dataMax + 10']} />
                     <XAxis 
-                    dataKey="day" 
-                    tickLine={false} 
-                    axisLine={false} 
-                    tick={{ fill: "rgba(255, 255, 255, 0.5)", fontFamily: "Roboto", fontWeight: 500, fontSize: 14 }} 
-                    height={50}
-                    tickSize={25}
+                        hide={true}
+                        dataKey="day" 
                     />
                     <Tooltip content={<CustomTooltip />} cursor={{stroke: "none"}} />
                     <Line 
@@ -42,6 +39,11 @@ const AverageSession = ({ averageSession }) => {
                     />
                 </LineChart>
             </ResponsiveContainer>
+            <ul className="average-session__personnalizedAxis">
+                {data.map((element, index) => (
+                    <li key={index}>{element.day}</li>
+                ))}
+            </ul>
         </div>
     )
 }

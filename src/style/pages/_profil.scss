@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 2em;
-    height: 100%;
+    gap: 4em;
     &__heading {
         &__salutation {
             margin-bottom: 0.5em;
@@ -14,26 +13,36 @@
     }
     &__content {
         display: flex;
+        flex-wrap: wrap;
         gap: 2em;
         &__activity {
             display: flex;
             flex: 1;
+            flex-basis: 76%;
             flex-direction: column;
             gap: 2em;
+            overflow: hidden;
             &__details {
                 display: flex;
-                flex: 1;
+                flex-wrap: wrap;
                 gap: 2em;
+                flex: 1;
                 & > * {
                     border-radius: $radius;
                     flex: 1;
+                    height: 260px;
+                    min-width: 260px;
                 }
             }
         }
         &__summary {
             display: flex;
-            flex-direction: column;
+            flex: 1;
+            flex-wrap: wrap;
             gap: 2em;
+            li {
+                flex: 1;
+            }
         }
     }
 }

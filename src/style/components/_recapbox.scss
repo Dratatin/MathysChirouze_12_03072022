@@ -3,8 +3,8 @@
     background: $greybackground;
     border-radius: $radius;
     display: flex;
-    padding: 1.8em;
-    width: 260px;
+    padding: 2em;
+    flex: 1;
     &__iconctn {
         align-items: center;
         border-radius: $radius;
