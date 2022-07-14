@@ -1,75 +1,41 @@
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
+import { RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
-const style = {
-  top: '50%',
-  right: 0,
-  transform: 'translate(0, -50%)',
-  lineHeight: '24px',
-};
-
-const data = [
-    {
-      name: '18-24',
-      uv: 31.47,
-      pv: 2400,
-      fill: '#8884d8',
-    },
-    {
-      name: '25-29',
-      uv: 26.69,
-      pv: 4567,
-      fill: '#83a6ed',
-    },
-    {
-      name: '30-34',
-      uv: 15.69,
-      pv: 1398,
-      fill: '#8dd1e1',
-    },
-    {
-      name: '35-39',
-      uv: 8.22,
-      pv: 9800,
-      fill: '#82ca9d',
-    },
-    {
-      name: '40-49',
-      uv: 8.63,
-      pv: 3908,
-      fill: '#a4de6c',
-    },
-    {
-      name: '50+',
-      uv: 2.63,
-      pv: 4800,
-      fill: '#d0ed57',
-    },
-    {
-      name: 'unknow',
-      uv: 6.67,
-      pv: 4800,
-      fill: '#ffc658',
-    },
-  ];
-  
-
-const Score = () => {
-    return(
-        <div>
-            <ResponsiveContainer width="100%" height="100%">
-                <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data} width={400} height={400} >
-                <RadialBar
-                    minAngle={15}
-                    label={{ position: 'insideStart', fill: '#fff' }}
-                    background
-                    clockWise
-                    dataKey="uv"
-                />
-                <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
-                </RadialBarChart>
-            </ResponsiveContainer>
-        </div>
-    )
+const Score = (data) => {
+  data = [{score : data.score*100}]
+  return(
+    <div className="score">
+      <h3 className="score__title">Score</h3>
+      <ResponsiveContainer width="100%" height="100%">
+        
+          <RadialBarChart 
+            cx="50%" 
+            cy="50%" 
+            innerRadius="80%"
+            barSize={10} 
+            startAngle={90}
+            endAngle={470}
+            data={data} 
+            margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+          >
+            <circle cx="50%" cy="50%" fill="white" r="82"></circle>
+            <PolarAngleAxis 
+              type="number" 
+              domain={[0, 100]} 
+              angleAxisId={1} 
+              tick={false} 
+            />
+            <RadialBar 
+              dataKey="score" 
+              angleAxisId={1} 
+              data={data} 
+              cornerRadius={10}
+              fill="#FF0000"
+            />
+          </RadialBarChart>
+      </ResponsiveContainer>
+      <p className="score__details"><span className="score__details__number">{data[0].score}%</span><br/> de votre<br/> objectif</p>
+    </div>
+  )
 }
 
 export default Score

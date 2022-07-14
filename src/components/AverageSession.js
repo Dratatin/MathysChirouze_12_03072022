@@ -9,7 +9,7 @@ const AverageSession = ({ session }) => {
 
     return(
         <div className="average-session">
-            <h3 className="average-session__label">Durée moyenne de <br/> sessions</h3>
+            <h3 className="average-session__title">Durée moyenne de <br/> sessions</h3>
             <ResponsiveContainer width="100%">
                 <LineChart
                     width={500}
