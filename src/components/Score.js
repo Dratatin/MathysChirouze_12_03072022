@@ -6,7 +6,6 @@ const Score = (data) => {
     <div className="score">
       <h3 className="score__title">Score</h3>
       <ResponsiveContainer width="100%" height="100%">
-        
           <RadialBarChart 
             cx="50%" 
             cy="50%" 

@@ -321,10 +321,12 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: relative;
 }
 .average-session__title {
   color: rgba(255, 255, 255, 0.5);
   padding: 2em 2em 0 2em;
+  position: absolute;
 }
 .average-session__personnalizedAxis {
   display: -webkit-box;
