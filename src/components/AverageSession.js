@@ -8,8 +8,6 @@ const AverageSession = ({ session }) => {
         day : ["L","M","M","J","V","S","D"][element.day - 1]
     }))
 
-    console.log(data)
-
     return(
         <div className="average-session">
             <h3 className="average-session__title">Durée moyenne de <br/> sessions</h3>
