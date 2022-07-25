@@ -3,17 +3,12 @@ import CustomTooltip from './customTooltip';
 import CustomCursor from './CustomCursor';
 
 const AverageSession = ({ session }) => {
-    const data = session.map(element => ({
-        ...element,
-        day : ["L","M","M","J","V","S","D"][element.day - 1]
-    }))
-
     return(
         <div className="average-session">
             <h3 className="average-session__title">Durée moyenne de <br/> sessions</h3>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                    data={data}
+                    data={session}
                     margin={{ right: -2, top: 50, left: -2, bottom: 15 }}
                 >
                     <defs>

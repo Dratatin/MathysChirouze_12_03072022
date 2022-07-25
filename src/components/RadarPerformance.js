@@ -2,30 +2,11 @@ import { Radar, RadarChart, PolarGrid, PolarRadiusAxis, PolarAngleAxis, Responsi
 
 const RadarPerformance = ({ performance }) => {
 
-  const trad = (kind) => {
-    switch (kind) {
-      case "energy":
-        return "energie"
-      case "strength":
-        return "force"
-      case "speed":
-        return "vitesse"
-      case "intensity":
-        return "intensité"
-      default:
-        return kind
-    }
-  }
-  const data = performance.data.map(element => ({
-    ...element,
-    kind : trad(performance.kind[element.kind])
-  }))
-
   return(
       <div className="radar">
           <ResponsiveContainer width="100%" height="100%">
               <RadarChart 
-                data={data.reverse()}
+                data={performance.reverse()}
                 margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
               >
                 <PolarGrid radialLines={false} />

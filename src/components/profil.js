@@ -10,6 +10,7 @@ import apple from "../assets/apple.svg"
 import burger from "../assets/burger.svg"
 import { useParams } from "react-router"
 import { useFetchDatas } from "../services/api"
+import { UserDataFormater } from "../utils/dataformatter"
 // Uncomment the line below and comment the on above line to use mocked data
 // import { useFetchDatas } from "../services/mockapi" 
 
@@ -18,14 +19,19 @@ const Profil = () => {
     if (userId === undefined) {
       userId = 12
     }
-
-    const { mainData, activityData, averageSessionsData, performanceData, isLoading, error } = useFetchDatas(userId);
-
+    let { mainData, activityData, averageSessionsData, performanceData, isLoading, error } = useFetchDatas(userId);
+    
     if (error) {
       return (<span>Il y a eu un problème :{error.message}</span>)
     } else if (isLoading) {
       return <Loader />
-    } else {
+    } else {    
+        const dataFormater = new UserDataFormater(mainData, activityData, averageSessionsData, performanceData)
+        mainData = dataFormater.getMain()
+        activityData = dataFormater.getActivity()
+        averageSessionsData = dataFormater.getAverageSessions()
+        performanceData = dataFormater.getPerformance()
+        
         return (
             <section className="profil">
                 <div className="profil__heading">
@@ -36,9 +42,9 @@ const Profil = () => {
                     <div className="profil__content__activity">
                         <Dailyactivity activity={activityData.sessions}/>
                         <div className="profil__content__activity__details">
-                            <AverageSession session={averageSessionsData.sessions}/>
+                            <AverageSession session={averageSessionsData}/>
                             <RadarPerformance performance={performanceData}/>
-                            <Score score={mainData.score || mainData.todayScore} />
+                            <Score score={mainData.formatedScore} />
                         </div>
                     </div>
                     <ul className="profil__content__summary">
