@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import CustomTooltip from './customTooltip';
+import CustomTooltip from './CustomTooltip';
 import CustomCursor from './CustomCursor';
 
 const AverageSession = ({ session }) => {

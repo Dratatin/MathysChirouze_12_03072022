@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Navigate, Route, Routes, BrowserRouter } from 'react-router-dom';
 import './style/main.css';
-import Profil from './components/profil';
-import Header from './components/header';
-import Sidebar from './components/sidebar';
+import Profil from './pages/Profil';
+import Header from './layout/Header';
+import Sidebar from './layout/Sidebar';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

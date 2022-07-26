@@ -1,4 +1,4 @@
-import CustomTooltip from './customTooltip';
+import CustomTooltip from './CustomTooltip';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const Dailyactivity = ({activity}) => {
@@ -10,10 +10,10 @@ const Dailyactivity = ({activity}) => {
             })
             return value
         }
+
         const kilogramValues = getkKilogramValue()
         const min = Math.min(...kilogramValues) - 1
         const max = Math.max(...kilogramValues) + 1
-    
         const somme = min + max
         const medium = somme/2
         const yAxisData = [min, medium, max]

@@ -1,9 +1,9 @@
-import Dailyactivity from "./Dailyactivity"
-import AverageSession from "./AverageSession"
-import RadarPerformance from "./RadarPerformance"
-import Score from "./Score"
-import Recapbox from "./recapbox"
-import Loader from "./loader"
+import Dailyactivity from "../components/Dailyactivity"
+import AverageSession from "../components/AverageSession"
+import RadarPerformance from "../components/RadarPerformance"
+import Score from "../components/Score"
+import Recapbox from "../components/Recapbox"
+import Loader from "../components/Loader"
 import fire from "../assets/fire.svg"
 import meet from "../assets/meet.svg"
 import apple from "../assets/apple.svg"
@@ -13,6 +13,7 @@ import { useFetchDatas } from "../services/api"
 import { UserDataFormater } from "../utils/dataformatter"
 // Uncomment the line below and comment the on above line to use mocked data
 // import { useFetchDatas } from "../services/mockapi" 
+
 
 const Profil = () => {
     let { userId } = useParams();
