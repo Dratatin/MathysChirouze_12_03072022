@@ -1,55 +1,83 @@
-export class UserDataFormater {
-    constructor (main, activity, averageSessions, performance) {
-        this.main = main
-        this.activity = activity
-        this.averageSession = averageSessions
-        this.performance = performance
-    }
-    getMain() {
-      let score = 0
-      if (this.main.score !== undefined) {
-        score = this.main.score * 100
-      }
-      if (this.main.todayScore !== undefined) {
-        score = this.main.todayScore * 100
-      }
-      if (this.main.formatedScore === undefined) {
-        this.main = Object.assign(this.main,{formatedScore: score});
-      }
-      return this.main
-    }
-    getActivity() {
-      return this.activity
-    }
-    getAverageSessions() {
-        const updateAverage = this.averageSession.sessions.map(element => ({
-            ...element,
-            day : ["L","M","M","J","V","S","D"][element.day - 1]
-        }))
-        this.averageSession = updateAverage
-        return this.averageSession
-    }
-    getPerformance() {
-        const trad = (kind) => {
-            switch (kind) {
-              case "energy":
-                return "energie"
-              case "strength":
-                return "force"
-              case "speed":
-                return "vitesse"
-              case "intensity":
-                return "intensité"
-              default:
-                return kind
-            }
-        }
-        const updatePerformance = this.performance.data.map(element => ({
-        ...element,
-        kind : trad(this.performance.kind[element.kind])
-        }))
+// @ts-check
 
-        this.performance = updatePerformance
-        return this.performance   
+/**
+ * Class to format data 
+ */
+export class UserDataFormater {
+  /**
+   * User data
+   * @param {Object} mainData user global data
+   * @param {Object} activityData user activity
+   * @param {Object} averageSessionsData user average sessions
+   * @param {Object} performanceData user performance
+   */
+  constructor(mainData, activityData, averageSessionsData, performanceData) {
+    this.mainData = mainData
+    this.activity = activityData
+    this.averageSessions = averageSessionsData
+    this.performance = performanceData
+  }
+  /**
+   * Transform score into percentage and return global data
+   * @returns {object} formatted main user data
+   */
+  getFormattedMain() {
+    let score = 0
+    if (this.mainData.score !== undefined) {
+      score = this.mainData.score * 100
     }
+    if (this.mainData.todayScore !== undefined) {
+      score = this.mainData.todayScore * 100
+    }
+    if (this.mainData.formattedScore === undefined) {
+      this.mainData = Object.assign(this.mainData, { formattedScore: score });
+    }
+    return this.mainData
+  }
+  /**
+   * Return user activity
+   * @returns {object} user activity
+   */
+  getFormattedActivity() {
+    return this.activity
+  }
+  /**
+   * Transform number of day into numbers and return average sessions
+   * @returns {object} formatted user average sessions
+   */
+  getFormattedAverageSessions() {
+    const updateAverage = this.averageSessions.sessions.map(element => ({
+      ...element,
+      day: ["L", "M", "M", "J", "V", "S", "D"][element.day - 1]
+    }))
+    this.averageSessions = updateAverage
+    return this.averageSessions
+  }
+  /**
+   * Translate kind of performance EN to FR and return performance
+   * @returns {object} formatted user performance
+   */
+  getFormattedPerformance() {
+    const trad = (kind) => {
+      switch (kind) {
+        case "energy":
+          return "energie"
+        case "strength":
+          return "force"
+        case "speed":
+          return "vitesse"
+        case "intensity":
+          return "intensité"
+        default:
+          return kind
+      }
+    }
+    const updatePerformance = this.performance.data.map(element => ({
+      ...element,
+      kind: trad(this.performance.kind[element.kind])
+    }))
+
+    this.performance = updatePerformance
+    return this.performance
+  }
 }

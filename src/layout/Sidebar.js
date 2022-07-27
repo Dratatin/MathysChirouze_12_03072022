@@ -3,6 +3,12 @@ import swimming from '../assets/swimming.svg'
 import bike from '../assets/bike.svg'
 import strength from '../assets/strength.svg'
 
+/**
+ * Component of Sidebar with physical activities
+ * icons and copyright
+ * 
+ * @returns {JSX.Element} A Sidebar component
+ */
 const Sidebar = () => {
     return (
         <div className="sidebar">

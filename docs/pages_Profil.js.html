@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>pages/Profil.js - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UserDataFormater.html">UserDataFormater</a><ul class='methods'><li data-type='method'><a href="UserDataFormater.html#getFormattedActivity">getFormattedActivity</a></li><li data-type='method'><a href="UserDataFormater.html#getFormattedAverageSessions">getFormattedAverageSessions</a></li><li data-type='method'><a href="UserDataFormater.html#getFormattedMain">getFormattedMain</a></li><li data-type='method'><a href="UserDataFormater.html#getFormattedPerformance">getFormattedPerformance</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Profil">Profil</a></li><li><a href="global.html#RadarPerformance">RadarPerformance</a></li><li><a href="global.html#Recapbox">Recapbox</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#useFetchDatas">useFetchDatas</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pages/Profil.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import DailyActivity from "../components/DailyActivity"
+import AverageSession from "../components/AverageSession"
+import RadarPerformance from "../components/RadarPerformance"
+import Score from "../components/Score"
+import Recapbox from "../components/Recapbox"
+import Loader from "../components/Loader"
+import fire from "../assets/fire.svg"
+import meet from "../assets/meet.svg"
+import apple from "../assets/apple.svg"
+import burger from "../assets/burger.svg"
+import { useParams } from "react-router"
+import useFetchDatas from "../services/api"
+import { UserDataFormater } from "../utils/dataformatter"
+// Uncomment the line below and comment the on above line to use mocked data
+// import useFetchDatas from "../services/mockapi" 
+
+/**
+ * Main page component that displays all 
+ * the user activities data in a Dashboard
+ *
+ * @returns {JSX.Element} A Profil component
+ */
+const Profil = () => {
+    let { userId } = useParams();
+    if (userId === undefined) {
+        userId = 12
+    }
+    let { mainData, activityData, averageSessionsData, performanceData, isLoading, error } = useFetchDatas(userId);
+
+    if (error) {
+        return (&lt;span>Il y a eu un problème :{error.message}&lt;/span>)
+    } else if (isLoading) {
+        return &lt;Loader />
+    } else {
+        const dataFormater = new UserDataFormater(mainData, activityData, averageSessionsData, performanceData)
+        mainData = dataFormater.getFormattedMain()
+        activityData = dataFormater.getFormattedActivity()
+        averageSessionsData = dataFormater.getFormattedAverageSessions()
+        performanceData = dataFormater.getFormattedPerformance()
+
+        return (
+            &lt;section className="profil">
+                &lt;div className="profil__heading">
+                    &lt;h2 className="profil__heading__salutation">Bonjour &lt;span>{mainData.userInfos.firstName}&lt;/span>&lt;/h2>
+                    &lt;p>Félicitation ! Vous avez explosé vos objectifs hier 👏&lt;/p>
+                &lt;/div>
+                &lt;div className="profil__content">
+                    &lt;div className="profil__content__activity">
+                        &lt;DailyActivity activity={activityData.sessions} />
+                        &lt;div className="profil__content__activity__details">
+                            &lt;AverageSession session={averageSessionsData} />
+                            &lt;RadarPerformance performance={performanceData} />
+                            &lt;Score score={mainData.formattedScore} />
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;ul className="profil__content__summary">
+                        &lt;li>&lt;Recapbox icon={fire} type="fire" label="calories" data={mainData.keyData.calorieCount} />&lt;/li>
+                        &lt;li>&lt;Recapbox icon={meet} type="meet" label="proteines" data={mainData.keyData.proteinCount} />&lt;/li>
+                        &lt;li>&lt;Recapbox icon={apple} type="apple" label="glucide" data={mainData.keyData.carbohydrateCount} />&lt;/li>
+                        &lt;li>&lt;Recapbox icon={burger} type="burger" label="lipide" data={mainData.keyData.lipidCount} />&lt;/li>
+                    &lt;/ul>
+                &lt;/div>
+            &lt;/section>
+        )
+    }
+}
+
+export default Profil</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Wed Jul 27 2022 20:40:48 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

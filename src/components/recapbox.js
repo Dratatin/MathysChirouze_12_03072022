@@ -1,6 +1,16 @@
 import PropTypes from 'prop-types';
 
-const Recapbox = ({icon, label, data, unit}) => {
+/**
+ * Component that display a information 
+ * block about an nutritional element
+ * @param {Object} props nutrition props
+ * @param {string} props.icon icon link
+ * @param {string} props.label icon link
+ * @param {string} props.data icon link
+ * @param {string} props.unit icon link
+ * @returns {JSX.Element}  A Recapbox component
+ */
+const Recapbox = ({ icon, label, data, unit }) => {
     if (label === "calories") {
         unit = "kCal"
     }

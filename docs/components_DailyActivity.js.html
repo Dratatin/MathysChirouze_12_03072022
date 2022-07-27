@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>components/DailyActivity.js - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UserDataFormater.html">UserDataFormater</a><ul class='methods'><li data-type='method'><a href="UserDataFormater.html#getFormattedActivity">getFormattedActivity</a></li><li data-type='method'><a href="UserDataFormater.html#getFormattedAverageSessions">getFormattedAverageSessions</a></li><li data-type='method'><a href="UserDataFormater.html#getFormattedMain">getFormattedMain</a></li><li data-type='method'><a href="UserDataFormater.html#getFormattedPerformance">getFormattedPerformance</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Profil">Profil</a></li><li><a href="global.html#RadarPerformance">RadarPerformance</a></li><li><a href="global.html#Recapbox">Recapbox</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#useFetchDatas">useFetchDatas</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/DailyActivity.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types';
+import CustomTooltip from './CustomTooltip';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
+/**
+ * Component that display a bar chart
+ * of daily weight and calories burned
+ * @param {Object} props activities props
+ * @param {Object[]} props.activity array of object that contain daily user activity
+ * @param {string} props.activity.day activity day
+ * @param {number} props.activity.kilogram user weight
+ * @param {number} props.activity.calories calories burned
+ * @returns {JSX.Element}  A DailyActivity component
+ */
+const DailyActivity = ({ activity }) => {
+    const getYaxisData = () => {
+        const getkKilogramValue = () => {
+            let value = []
+            activity.forEach(element => {
+                value.push(element.kilogram)
+            })
+            return value
+        }
+
+        const kilogramValues = getkKilogramValue()
+        const min = Math.min(...kilogramValues) - 1
+        const max = Math.max(...kilogramValues) + 1
+        const somme = min + max
+        const medium = somme / 2
+        const yAxisData = [min, medium, max]
+        return yAxisData
+    }
+
+    return (
+        &lt;div className="daily-activity">
+            &lt;div className="daily-activity__heading">
+                &lt;h3>Activité quotidienne&lt;/h3>
+                &lt;ul className="daily-activity__heading__listctn">
+                    &lt;li className="poids">Poids (kg)&lt;/li>
+                    &lt;li className="calories">Calories (kCal)&lt;/li>
+                &lt;/ul>
+            &lt;/div>
+            &lt;ResponsiveContainer width="100%" height="100%">
+                &lt;BarChart
+                    barGap={12}
+                    barSize={8}
+                    width={500}
+                    height={300}
+                    data={activity}
+                    margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                >
+                    &lt;CartesianGrid
+                        strokeDasharray="3 3"
+                        vertical={false}
+                    />
+                    &lt;XAxis
+                        domain={['dataMin', 'dataMax']}
+                        tickLine={false}
+                        stroke="#DEDEDE"
+                        tick={{ fill: "#9B9EAC", fontFamily: "Roboto", fontWeight: 500, fontSize: 14 }}
+                        height={40}
+                        tickSize={25}
+                    />
+                    &lt;YAxis
+                        yAxisId="kilogram"
+                        domain={['dataMin', 'dataMax']}
+                        dataKey="kilogram"
+                        orientation="right"
+                        tickLine={false}
+                        axisLine={false}
+                        ticks={getYaxisData()}
+                        tick={{ fill: "#9B9EAC", fontFamily: "Roboto", fontWeight: 500, fontSize: 14 }}
+                        width={70}
+                        tickSize={50}
+                    />
+                    &lt;YAxis
+                        hide
+                        yAxisId="calories"
+                        domain={['dataMin - 100', 'dataMax + 100']}
+                        dataKey="calories"
+                        orientation="right"
+                    />
+                    &lt;Tooltip content={&lt;CustomTooltip />} cursor={{ fill: '#E5E5E5' }} offset={40} />
+                    &lt;Bar
+                        yAxisId="kilogram"
+                        dataKey="kilogram"
+                        radius={[4, 4, 0, 0]}
+                        fill="#282D30"
+                        unit="kg"
+                    />
+                    &lt;Bar
+                        yAxisId="calories"
+                        dataKey="calories"
+                        radius={[4, 4, 0, 0]}
+                        fill="#E60000"
+                        unit="kCal"
+                    />
+                &lt;/BarChart>
+            &lt;/ResponsiveContainer>
+        &lt;/div>
+    )
+}
+
+DailyActivity.propTypes = {
+    activity: PropTypes.arrayOf(
+        PropTypes.shape({
+            day: PropTypes.string,
+            kilogram: PropTypes.number,
+            calories: PropTypes.number,
+        })
+    ),
+}
+
+export default DailyActivity</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Wed Jul 27 2022 20:40:48 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
