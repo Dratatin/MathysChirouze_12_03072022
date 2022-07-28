@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
  * @returns {JSX.Element}  A CustomTooltip component
  */
 const CustomTooltip = ({ active, payload }) => {
-    console.log(payload)
     if (active) {
         return (
             <div className={payload[0].fill === "#fff" ? "tooltip tooltip--light" : "tooltip tooltip--primary"}>
