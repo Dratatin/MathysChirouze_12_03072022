@@ -31,11 +31,11 @@ In this repository you will find the new version of the SportSee front end profi
 - The `npm install` command will allow you to install the dependencies.
 - The `npm run start` command will allow you to run the app.
 
-### 3.3 Frontend with mock data
+### 3.3 Frontend with mocked data
 In profile.js uncomment the line 15 and comment the line 13 to use mocked data
 - Use `npm start` command to run your app
 
-## 3. Available Scripts
+## 4. Available Scripts
 
 In the project directory, you can run:
 
@@ -74,5 +74,5 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## 4. Author  
+## 5. Author  
 Mathys CHIROUZE
