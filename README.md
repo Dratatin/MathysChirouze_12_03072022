@@ -18,22 +18,29 @@ In this repository you will find the new version of the SportSee front end profi
 
 ## 3. Install project
 
-### 3.1 Backend
+### 3.1 With Micro API
+
+#### Backend
 
 - Fork the [Backend](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) repository
 - Clone it on your computer.
 - The `yarn` command will allow you to install the dependencies.
 - The `yarn dev` command will allow you to run the micro API.
 
-### 3.2 Frontend
+#### Frontend
 
 - Clone this repository.
 - The `npm install` command will allow you to install the dependencies.
 - The `npm run start` command will allow you to run the app.
 
-### 3.3 Frontend with mocked data
-In profile.js uncomment the line 15 and comment the line 13 to use mocked data
-- Use `npm start` command to run your app
+### 3.2 With mocked data
+
+#### Frontend only
+
+- Clone this repository.
+- The `npm install` command will allow you to install the dependencies.
+- Before starting your app, in profile.js file uncomment the line 15 and comment the line 13 to use mocked data
+- The `npm run start` command will allow you to run the app.
 
 ## 4. Available Scripts
 
