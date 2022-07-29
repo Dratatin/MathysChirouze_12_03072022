@@ -54,6 +54,7 @@ const DailyActivity = ({ activity }) => {
                         vertical={false}
                     />
                     <XAxis
+                        dataKey="session"
                         domain={['dataMin', 'dataMax']}
                         tickLine={false}
                         stroke="#DEDEDE"

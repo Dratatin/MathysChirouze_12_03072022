@@ -39,7 +39,11 @@ export class UserDataFormater {
    * @returns {object} user activity
    */
   getFormattedActivity() {
-    return this.activity
+    const updateActivity = this.activity.sessions.map((element, index) => ({
+      ...element,
+      session: index + 1
+    }))
+    return updateActivity
   }
   /**
    * Transform number of day into numbers and return average sessions
@@ -50,8 +54,7 @@ export class UserDataFormater {
       ...element,
       day: ["L", "M", "M", "J", "V", "S", "D"][element.day - 1]
     }))
-    this.averageSessions = updateAverage
-    return this.averageSessions
+    return updateAverage
   }
   /**
    * Translate kind of performance EN to FR and return performance
@@ -76,8 +79,6 @@ export class UserDataFormater {
       ...element,
       kind: trad(this.performance.kind[element.kind])
     }))
-
-    this.performance = updatePerformance
-    return this.performance
+    return updatePerformance.reverse()
   }
 }

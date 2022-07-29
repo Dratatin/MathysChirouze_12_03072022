@@ -15,8 +15,8 @@ const RadarPerformance = ({ performance }) => {
     <div className="radar">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart
-          data={performance.reverse()}
-          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+          data={performance}
+          margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
         >
           <PolarGrid radialLines={false} />
           <PolarAngleAxis

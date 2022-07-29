@@ -9,10 +9,10 @@ import meet from "../assets/meet.svg"
 import apple from "../assets/apple.svg"
 import burger from "../assets/burger.svg"
 import { useParams } from "react-router"
-import useFetchDatas from "../services/api"
 import { UserDataFormater } from "../utils/dataformatter"
+import useFetchDatas from "../services/api"
 // Uncomment the line below and comment the on above line to use mocked data
-// import useFetchDatas from "../services/mockapi" 
+// import useFetchDatas from "../services/mockapi"
 
 /**
  * Main page component that displays all 
@@ -46,7 +46,7 @@ const Profil = () => {
                 </div>
                 <div className="profil__content">
                     <div className="profil__content__activity">
-                        <DailyActivity activity={activityData.sessions} />
+                        <DailyActivity activity={activityData} />
                         <div className="profil__content__activity__details">
                             <AverageSession session={averageSessionsData} />
                             <RadarPerformance performance={performanceData} />
