@@ -75,14 +75,18 @@ export class UserDataFormater {
     return this.mainData
   }
   /**
-   * Return user activity
+   * Add a session number to identify the session and return updated activity
    * @returns {object} user activity
    */
   getFormattedActivity() {
-    return this.activity
+    const updateActivity = this.activity.sessions.map((element, index) => ({
+      ...element,
+      session: index + 1
+    }))
+    return updateActivity
   }
   /**
-   * Transform number of day into numbers and return average sessions
+   * Transform number of day to the first letter of the day and return average sessions
    * @returns {object} formatted user average sessions
    */
   getFormattedAverageSessions() {
@@ -90,8 +94,7 @@ export class UserDataFormater {
       ...element,
       day: ["L", "M", "M", "J", "V", "S", "D"][element.day - 1]
     }))
-    this.averageSessions = updateAverage
-    return this.averageSessions
+    return updateAverage
   }
   /**
    * Translate kind of performance EN to FR and return performance
@@ -116,9 +119,7 @@ export class UserDataFormater {
       ...element,
       kind: trad(this.performance.kind[element.kind])
     }))
-
-    this.performance = updatePerformance
-    return this.performance
+    return updatePerformance.reverse()
   }
 }</code></pre>
         </article>
@@ -132,7 +133,7 @@ export class UserDataFormater {
 <br class="clear">
 
 <footer>
-    Documentation generated at Thu Jul 28 2022 15:21:36 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated at Sat Jul 30 2022 08:25:23 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script>prettyPrint();</script>

@@ -35,7 +35,7 @@ export class UserDataFormater {
     return this.mainData
   }
   /**
-   * Return user activity
+   * Add a session number to identify the session and return updated activity
    * @returns {object} user activity
    */
   getFormattedActivity() {
@@ -46,7 +46,7 @@ export class UserDataFormater {
     return updateActivity
   }
   /**
-   * Transform number of day into numbers and return average sessions
+   * Transform number of day to the first letter of the day and return average sessions
    * @returns {object} formatted user average sessions
    */
   getFormattedAverageSessions() {
