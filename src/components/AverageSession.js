@@ -8,8 +8,8 @@ import CustomCursor from './CustomCursor';
  * of user session length per day
  * @param {Object} props session props
  * @param {Object[]} props.session array of object that contain the day and session length
- * @param {number} props.session.day user session day
- * @param {string} props.session.sessionLength user session length
+ * @param {string} props.session.day user session day
+ * @param {number} props.session.sessionLength user session length
  * @returns {JSX.Element}  An AverageSession component
  */
 const AverageSession = ({ session }) => {
